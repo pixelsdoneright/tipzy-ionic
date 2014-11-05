@@ -1,0 +1,26 @@
+<ion-view title="Tipzy">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <!--ion-list>
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+    </ion-item>
+</ion-list-->
+<label class="item item-input">
+  <span class="input-label">Bill Amt</span>
+  <input type="tel" id="billAmt" name="billAmt" autofocus ng-model="tipzy.billedAmount" format ng-change="calculatePayable(); unevenSplit();">
+</label>
+<label class="item item-input">
+  <span class="input-label">Split By</span>
+  <button><<</button> {{tipzy.people}} <button>>></button>
+</label>
+Bill Amt: {{tipzy.billedAmount}} <br/>
+Total Payable: {{tipzy.payable}} <br/>
+Tip: {{tipzy.tip}} <br/>
+Payable per person: {{tipzy.payablePerPerson}} <br/>
+Tip per person: {{tipzy.tipPerPerson}} <br/>
+
+  </ion-content>
+</ion-view>

@@ -51,10 +51,10 @@ angular.module('tipzy.controllers', [])
 
 		if (ba > 0) {
 			t.tip = ba * t.tipRate;
-			t.payable = parseInt(t.billedAmount) + t.tip;
+			t.payable = parseFloat(t.billedAmount) + t.tip;
 
 			t.tipPerPerson = t.tip / t.people;
-			t.payablePerPerson = t.payable / t.people;
+			t.payablePerPerson = parseFloat((t.payable / t.people).toFixed(2));
 		}
 
 	};
@@ -62,21 +62,22 @@ angular.module('tipzy.controllers', [])
 	$scope.unevenSplit = function () {
 		var eachSplit;
 
-		if (!$scope.splitPersons || $scope.splitPersons.length <= 0) {
-			$scope.splitPersons = [];
-		} else if ($scope.splitPersons.length == 1) {
-			$scope.splitPersons = [];
-		} else if ($scope.splitPersons.length > $scope.tipzy.people) {
-			$scope.splitPersons.splice(parseFloat($scope.splitPersons.length - 1), 1);
+		if (!$scope.tipzy.peoplelist || $scope.tipzy.peoplelist.length <= 0) {
+			$scope.tipzy.peoplelist = [];
+		} else if ($scope.tipzy.peoplelist.length == 1) {
+			$scope.tipzy.peoplelist = [];
+		} else if ($scope.tipzy.peoplelist.length > $scope.tipzy.people) {
+			$scope.tipzy.peoplelist.splice(parseFloat($scope.tipzy.peoplelist.length -
+				1), 1);
 		}
 
 
-		for (var i = $scope.splitPersons.length; i < $scope.tipzy.people; i++) {
+		for (var i = $scope.tipzy.peoplelist.length; i < $scope.tipzy.people; i++) {
 			eachSplit = {};
 			eachSplit.amt = 0;
 			eachSplit.edited = false;
 
-			$scope.splitPersons.push(eachSplit);
+			$scope.tipzy.peoplelist.push(eachSplit);
 		}
 
 		$scope.calcSplit();
@@ -88,22 +89,38 @@ angular.module('tipzy.controllers', [])
 
 		var eTotal = uTotal = eTotalCount = uTotalCount = 0;
 
-		for (var i = 0; i < $scope.splitPersons.length; i++) {
-			if ($scope.splitPersons[i].edited) {
-				eTotal += parseFloat($scope.splitPersons[i].amt);
+		for (var i = 0; i < $scope.tipzy.peoplelist.length; i++) {
+			if ($scope.tipzy.peoplelist[i].edited) {
+				eTotal += parseFloat($scope.tipzy.peoplelist[i].amt);
 				eTotalCount++;
 			} else {
-				uTotal += parseFloat($scope.splitPersons[i].amt);
+				uTotal += parseFloat($scope.tipzy.peoplelist[i].amt);
 				uTotalCount++;
 			}
 
 		}
 
-		for (var i = 0; i < $scope.splitPersons.length; i++) {
-			if (!$scope.splitPersons[i].edited)
-				$scope.splitPersons[i].amt = parseFloat((parseFloat($scope.tipzy.payable) -
+		for (var i = 0; i < $scope.tipzy.peoplelist.length; i++) {
+			if (!$scope.tipzy.peoplelist[i].edited)
+				$scope.tipzy.peoplelist[i].amt = parseFloat((parseFloat($scope.tipzy.payable) -
 					parseFloat(eTotal)) / uTotalCount).toFixed(2);
 		}
+	};
+
+	$scope.addPeople = function () {
+		if ($scope.tipzy.people < 25) {
+			$scope.tipzy.people++;
+		}
+		$scope.calculatePayable();
+		$scope.unevenSplit();
+	};
+
+	$scope.removePeople = function () {
+		if ($scope.tipzy.people > 1) {
+			$scope.tipzy.people--;
+		}
+		$scope.calculatePayable();
+		$scope.unevenSplit();
 	};
 
 });

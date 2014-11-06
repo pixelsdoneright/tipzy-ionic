@@ -14,13 +14,24 @@
 </label>
 <label class="item item-input">
   <span class="input-label">Split By</span>
-  <button><<</button> {{tipzy.people}} <button>>></button>
 </label>
+<button href="#" class="button button-full button-positive button-small" ng-click="removePeople()"> << </button>
+   {{tipzy.people}}
+<button href="#" class="button button-full button-positive button-small" ng-click="addPeople()"> >> </button>
 Bill Amt: {{tipzy.billedAmount}} <br/>
 Total Payable: {{tipzy.payable}} <br/>
 Tip: {{tipzy.tip}} <br/>
 Payable per person: {{tipzy.payablePerPerson}} <br/>
 Tip per person: {{tipzy.tipPerPerson}} <br/>
+
+<div class="uneven-splitblk" ng-show="tipzy.people > 1">
+                THis shows up where there is un-even split
+
+                <div ng-repeat="split in tipzy.peoplelist" class="each-person">
+                    <i class="glyphicon glyphicon-user"></i> <input type="text" ng-change="calcSplit(this.split)" class="divide-input form-control input-lg {{$index}}" ng-model="split.amt">
+                </div>
+
+            </div>
 
   </ion-content>
 </ion-view>

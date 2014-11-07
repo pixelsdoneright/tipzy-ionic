@@ -1,0 +1,18 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">Currencies</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="hideCurrencyList()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+        <ion-radio ng-repeat="currency in modal.currencyList"
+                   ng-value="currency"
+                   ng-model="modal.currency"
+                   ng-change="hideCurrencyList()">
+          {{ currency }}
+        </ion-radio>
+    </div>
+  </ion-content>
+</div>

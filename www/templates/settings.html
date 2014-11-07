@@ -3,6 +3,11 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <h1>SETTINGS</h1>
+    <div ng-repeat="cfg in tipzy.config" class="each-person">
+        <div class="icon ion-ios7-gear-outline"> {{cfg.property}} :</div>
+        <input type="tel" ng-if="cfg.property != 'currency'" class="divide-input form-control input-lg {{$index}}" ng-model="cfg.value">
+        <button href="#" ng-if="cfg.property == 'currency'" ng-click="showCurrencyList()" class="button button-full button-positive button-small"> {{cfg.value}} </button>
+    </div>
+  <button class="button button-block button-balanced" ng-click="saveSettings()">Save</button>
   </ion-content>
 </ion-view>

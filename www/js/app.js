@@ -4,10 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('tipzy', ['ionic', 'tipzy.controllers', 'tipzy.directives'])
+angular.module('tipzy', ['ionic', 'tipzy.controllers', 'tipzy.services',
+	'tipzy.directives'])
 
 .run(function ($ionicPlatform) {
 	$ionicPlatform.ready(function () {
+		tipzy.webdb.open();
+
 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 		// for form inputs)
 		if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -35,7 +38,7 @@ angular.module('tipzy', ['ionic', 'tipzy.controllers', 'tipzy.directives'])
 		views: {
 			'menuContent': {
 				templateUrl: "templates/calculate.html",
-				controller: 'calculateCtrl'
+				controller: 'calculateController'
 			}
 		}
 	})
@@ -44,7 +47,8 @@ angular.module('tipzy', ['ionic', 'tipzy.controllers', 'tipzy.directives'])
 		url: "/settings",
 		views: {
 			'menuContent': {
-				templateUrl: "templates/settings.html"
+				templateUrl: "templates/settings.html",
+				controller: 'settingsController'
 			}
 		}
 	})

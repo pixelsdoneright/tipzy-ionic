@@ -125,8 +125,11 @@ angular.module('tipzy.controllers', [])
 
 })
 
-.controller('settingsController', function ($scope, $state, $ionicModal, tipzyConfigService) {
-	$scope.tipzy = {'config': {}};
+.controller('settingsController', function ($scope, $state, $ionicModal,
+	tipzyConfigService) {
+	$scope.tipzy = {
+		'config': {}
+	};
 
 	tipzyConfigService.getConfig(function (data) {
 		$scope.$apply(function () {
@@ -135,31 +138,32 @@ angular.module('tipzy.controllers', [])
 	});
 
 	$ionicModal.fromTemplateUrl('templates/currencylist.html', {
-			scope: $scope,
-			animation: 'slide-in-up'
-		}).then(function(modal) {
-			$scope.modal = modal;
-		});
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function (modal) {
+		$scope.modal = modal;
+	});
 
-	$scope.showCurrencyList = function() {
+	$scope.showCurrencyList = function () {
 		$scope.modal.show();
 
-		for(var i = 0; i < $scope.tipzy.config.length; i++){
+		for (var i = 0; i < $scope.tipzy.config.length; i++) {
 			var cfg = $scope.tipzy.config[i];
-			if(cfg.property == 'currency'){
+			if (cfg.property == 'currency') {
 				$scope.modal.currency = cfg.value;
 				break;
 			}
 		}
 
-		$scope.modal.currencyList = ["$", "€", "₹", "£", "₡", "¥", "₪", "₩", "₨", "﷼", "₱", "฿", "Kč"];
+		$scope.modal.currencyList = ["$", "€", "₹", "£", "₡", "¥", "₪", "₩", "₨",
+			"﷼", "₱", "฿", "Kč"];
 	};
 
-	$scope.hideCurrencyList = function() {
+	$scope.hideCurrencyList = function () {
 		$scope.modal.hide();
 
-		for(var i = 0; i < $scope.tipzy.config.length; i++){
-			if($scope.tipzy.config[i].property == 'currency'){
+		for (var i = 0; i < $scope.tipzy.config.length; i++) {
+			if ($scope.tipzy.config[i].property == 'currency') {
 				$scope.tipzy.config[i].value = $scope.modal.currency;
 				break;
 			}
@@ -167,22 +171,22 @@ angular.module('tipzy.controllers', [])
 	};
 
 	//Cleanup the modal when we're done with it!
-	$scope.$on('$destroy', function() {
+	$scope.$on('$destroy', function () {
 		$scope.modal.remove();
 	});
 
 	// Execute action on hide modal
-	$scope.$on('modal.hidden', function() {
-	// Execute action
+	$scope.$on('modal.hidden', function () {
+		// Execute action
 	});
 
 	// Execute action on remove modal
-	$scope.$on('modal.removed', function() {
-	// Execute action
+	$scope.$on('modal.removed', function () {
+		// Execute action
 	});
 
-	$scope.saveSettings = function(){
-		tipzyConfigService.setConfig($scope.tipzy.config, function(){
+	$scope.saveSettings = function () {
+		tipzyConfigService.setConfig($scope.tipzy.config, function () {
 			$state.transitionTo('tipzy.calculate');
 		});
 

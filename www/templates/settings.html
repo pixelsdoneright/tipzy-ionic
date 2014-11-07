@@ -3,6 +3,8 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <h1>SETTINGS</h1>
+    <div ng-repeat="cfg in tipzy.config" class="each-person">
+        <div class="icon ion-ios7-gear-outline"> {{cfg.property}} :</div><input type="text" class="divide-input form-control input-lg {{$index}}" ng-model="cfg.value">
+    </div>
   </ion-content>
 </ion-view>

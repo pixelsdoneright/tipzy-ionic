@@ -33,7 +33,7 @@ angular.module('tipzy.controllers', [])
 	};
 })
 
-.controller('calculateCtrl', function ($scope) {
+.controller('calculateController', function ($scope) {
 
 	$scope.tipzy = {
 		'billedAmount': 0.00,
@@ -123,4 +123,14 @@ angular.module('tipzy.controllers', [])
 		$scope.unevenSplit();
 	};
 
+})
+
+.controller('settingsController', function ($scope, tipzyConfigService) {
+	$scope.tipzy = {'config': {}};
+
+	tipzyConfigService.getConfig(function (data) {
+		$scope.$apply(function () {
+			$scope.tipzy.config = data;
+		});
+	});
 });

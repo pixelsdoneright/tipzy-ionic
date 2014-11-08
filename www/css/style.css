@@ -1,1 +1,85 @@
 /* Empty. Add your own CSS if you like */
+.pane {
+	background-image:url(../img/bg-pizza.jpg);
+	font-family: 'Open Sans', sans-serif;
+	-webkit-background-size: 300%;
+	background-size: 300%;
+}
+.item {
+	background: none;
+}
+
+.bill-input-blk {
+	background-color: rgba(85,85,85,.8);
+	margin: 5px;
+	color: #ffffff;
+	border:0px;
+	height: 70px;
+	position: relative;
+}
+.bill-input-blk .item {
+	border:0px;
+	height: 100%;
+}
+.bill-input-blk .input-label.left {
+	position: absolute;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-size: 9px;
+	bottom: 0px;
+	left: 6px;
+	padding:0px;
+	width: 50px;font-family: 'Open Sans', sans-serif;
+}
+.bill-input-blk .input-label.right {
+	position: absolute;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-size: 9px;
+	bottom: 0px;
+	right: 18px;
+	padding:0px;
+	width: 50px;
+	font-family: 'Open Sans', sans-serif;
+}
+.split-divider {
+	position: absolute;
+	font-size: 50px;
+	color: #dddddd;
+	left: 50%;
+	font-weight: 100;
+	margin-top: 20px;
+}
+.bill-input-blk .item-input {
+	padding:0px;
+	text-align: center;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+.bill-input-blk input {
+	text-align: left;
+	font-size: 36px;
+	color: #ffffff;
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	margin-top: -10px;
+	font-weight: 100;
+}
+.splitters {
+	font-size: 40px;
+	color: #aaa;
+	margin-top: -6px;
+	width: 60px;
+	font-weight: 100;
+	display: inline-block;
+}
+
+.the-split {
+	font-size: 30px;
+	color: #ffffff;
+	margin-top: -6px;
+	/*width: 40px;*/
+	font-weight: 100;
+}
+
+

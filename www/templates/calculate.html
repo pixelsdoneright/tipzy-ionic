@@ -1,39 +1,36 @@
 <ion-view title="Tipzy">
-    
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <div class="bill-input-blk">
+            <div class="item item-input">
+                <span class="input-label left">Your bill amount</span>
+                <span class="input-label right">wanna Split?</span>
+                <span class="split-divider">/</span>
+                <input type="tel" id="billAmt" name="billAmt" placeholder="Your Bill Amount" autofocus ng-model="tipzy.billedAmount" format ng-change="calculatePayable(); unevenSplit();">
 
-  </ion-nav-buttons>
-  <ion-content class="has-header">
-    <!--ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-    </ion-item>
-</ion-list-->
-<label class="item item-input">
-  <span class="input-label">Bill Amt</span>
-  <input type="tel" id="billAmt" name="billAmt" autofocus ng-model="tipzy.billedAmount" format ng-change="calculatePayable(); unevenSplit();">
-</label>
-<label class="item item-input">
-  <span class="input-label">Split By</span>
-</label>
-<button href="#" class="button button-full button-positive button-small" ng-click="removePeople()"> << </button>
-   {{tipzy.people}}
-<button href="#" class="button button-full button-positive button-small" ng-click="addPeople()"> >> </button>
-Bill Amt: {{tipzy.billedAmount}} <br/>
-Total Payable: {{tipzy.payable}} <br/>
-Tip: {{tipzy.tip}} <br/>
-Payable per person: {{tipzy.payablePerPerson}} <br/>
-Tip per person: {{tipzy.tipPerPerson}} <br/>
+                <a class="splitters" ng-click="removePeople()">&minus;</a>
+                    <span class="the-split">{{tipzy.people}}</span>
+                <a class="splitters" ng-click="addPeople()">&plus;</a>
+            </div>
+        </div>
 
-<div class="uneven-splitblk" ng-show="tipzy.people > 1">
-                THis shows up where there is un-even split
+        Bill Amt: {{tipzy.billedAmount}} <br/>
+        Total Payable: {{tipzy.payable}} <br/>
+        Tip: {{tipzy.tip}} <br/>
+        Payable per person: {{tipzy.payablePerPerson}} <br/>
+        Tip per person: {{tipzy.tipPerPerson}} <br/>
 
-                <div ng-repeat="split in tipzy.peoplelist" class="each-person">
-                    <i class="glyphicon glyphicon-user"></i> <input type="text" ng-change="calcSplit(this.split)" class="divide-input form-control input-lg {{$index}}" ng-model="split.amt">
-                </div>
+        <div class="uneven-splitblk" ng-show="tipzy.people > 1">
+            THis shows up where there is un-even split
 
+            <div ng-repeat="split in tipzy.peoplelist" class="each-person">
+                <i class="glyphicon glyphicon-user"></i>
+                <input type="text" ng-change="calcSplit(this.split)" class="divide-input form-control input-lg {{$index}}" ng-model="split.amt">
             </div>
 
-  </ion-content>
+        </div>
+
+    </ion-content>
 </ion-view>

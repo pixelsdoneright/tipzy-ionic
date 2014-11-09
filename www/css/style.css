@@ -82,4 +82,79 @@
 	font-weight: 100;
 }
 
+.persons-blk {
+	background-color: rgba(85,85,85,.8);
+	margin: 5px;
+	color: #aaaaaa;
+	border:0px;
+	position: relative;
+	font-size: 16px;
+}
+.calcs {
+	float: right;
+	margin: 22px 15px 16px 0px;
+}
+
+.persons-blk i {
+	margin:20px;
+	color: #aaaaaa;
+	font-size: 24px;
+}
+
+.payable {
+	/*font-size: 26px;*/
+	color: #1DDB23;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.tippable {
+	font-size: 12px;
+	color: #58E05C;
+}
+
+.ratings-blk {
+	background-color: rgba(85,85,85,.8);
+	margin: 5px;
+	color: #aaaaaa;
+	border:0px;
+	position: relative;
+	font-size: 16px;
+}
+
+.ratings-blk .each-rating {
+	width: 25%;
+	display: inline-block;
+	text-align: center;
+	border-left: 1px dashed #999999;
+	min-height: 50px;
+	line-height: 50px;
+	color: #C93C3C;
+	margin-left: -3px;
+	margin-right: -2px;
+}
+
+.each-rating.last {
+	padding-left: 10px;
+
+}
+.each-rating.third .fa {
+	width: 4px;
+	margin-left: -15px;
+}
+.each-rating.first .fa {
+	width: 4px;
+	/*margin-left: -15px;*/
+	border-left: 0px;
+}
+
+.each-rating.last .fa {
+	width: 4px;
+	margin-left: -15px;
+}
+
+.each-rating.selected {
+	background: #cccccc;
+	opacity: 0.8;
+}
 

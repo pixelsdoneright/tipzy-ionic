@@ -42,7 +42,7 @@ angular.module('tipzy.controllers', [])
 		'tip': 0.0,
 		'payablePerPerson': 0.0,
 		'tipPerPerson': 0.0,
-		'people': 2
+		'people': 1
 	};
 
 	$scope.calculatePayable = function () {
@@ -108,7 +108,7 @@ angular.module('tipzy.controllers', [])
 	};
 
 	$scope.addPeople = function () {
-		if ($scope.tipzy.people < 25) {
+		if ($scope.tipzy.people < 9) {
 			$scope.tipzy.people++;
 		}
 		$scope.calculatePayable();

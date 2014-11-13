@@ -1,12 +1,32 @@
 /* Empty. Add your own CSS if you like */
+
 .pane {
-	background-image:url(../img/bg-pizza.jpg);
+	background-image:url(../img/bg-food1.jpg);
 	font-family: 'Open Sans', sans-serif;
 	-webkit-background-size: 300%;
 	background-size: 300%;
+	background-position: 5%;
 }
 .item {
 	background: none;
+}
+
+/* STYLES FOR THE HEADER*/
+
+.bar.bar-stable {
+	background-color: #333333;
+}
+
+.bar-stable .button {
+	color: #cccccc;
+}
+.bar-stable .button:hover {
+	color: #cccccc;
+}
+.bar.bar-stable .title {
+	color: #dddddd;
+	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif !important;
 }
 
 .bill-input-blk {
@@ -75,7 +95,7 @@
 }
 
 .the-split {
-	font-size: 30px;
+	font-size: 36px;
 	color: #ffffff;
 	margin-top: -6px;
 	/*width: 40px;*/
@@ -96,16 +116,22 @@
 }
 
 .persons-blk i {
-	margin:20px;
 	color: #aaaaaa;
-	font-size: 24px;
+	font-size: 30px;
+	float: left;
+	line-height: 30px;
+	padding-top: 10px;
+	padding-left: 15px;
 }
 
 .payable {
 	/*font-size: 26px;*/
-	color: #1DDB23;
-	font-weight: bold;
-	font-size: 18px;
+	color: #eeeeee;
+	/*font-weight: bold;*/
+	font-size: 30px;
+	font-weight: 300;
+	float: right;
+	padding:15px 10px;
 }
 
 .tippable {
@@ -122,39 +148,65 @@
 	font-size: 16px;
 }
 
+.ratings-blk .row {
+	padding:0px;
+}
+
 .ratings-blk .each-rating {
-	width: 25%;
+	width: 18%;
 	display: inline-block;
 	text-align: center;
-	border-left: 1px dashed #999999;
+	/*border-left: 1px dashed #999999;*/
 	min-height: 50px;
 	line-height: 50px;
-	color: #C93C3C;
-	margin-left: -3px;
-	margin-right: -2px;
+	border-left:1px solid #999999;
+	color: #aaaaaa;
+	/*margin-left: -3px;*/
+	/*margin-right: -2px;*/
 }
 
-.each-rating.last {
-	padding-left: 10px;
-
-}
-.each-rating.third .fa {
-	width: 4px;
-	margin-left: -15px;
-}
-.each-rating.first .fa {
-	width: 4px;
-	/*margin-left: -15px;*/
-	border-left: 0px;
+.ratings-blk .col {
+	text-align: center;
+	border-left: 1px solid #999999;
+	min-height: 50px;
+	line-height: 50px;
+	font-size: 20px;
 }
 
-.each-rating.last .fa {
-	width: 4px;
-	margin-left: -15px;
+.ratings-blk .col span {
+	font-size: 12px;
 }
 
-.each-rating.selected {
-	background: #cccccc;
-	opacity: 0.8;
+.ratings-blk .col i{
+	text-align: center;
+	font-size: 6px;
+	/* border-left: 1px solid #999999; */
+	min-height: 0px;
+	line-height: 10px;
+	display: block;
+	margin-top: -10px;
+	visibility: hidden;
 }
 
+.ratings-blk .col.selected {
+	color: #ffffff;
+	/*border-bottom:2px solid #dddddd;*/
+}
+
+.ratings-blk .col.selected i {
+	visibility: visible;
+}
+
+
+
+/* STYLES FOR MENU */
+
+.item-complex .item-content, .item-radio .item-content {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #555555;
+}
+.item-complex .item-content .icon {
+	font-size: 14px;
+	color: #000;
+}

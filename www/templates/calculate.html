@@ -17,7 +17,24 @@
         </div>
 
         <div class="ratings-blk">
-            <div class="each-rating ">
+            <div class="row">
+                <div class="col first">
+                    0<span>%</span> <i class="icon ion-ios7-circle-filled"></i> 
+                </div>
+                <div class="col selected">
+                    10<span>%</span> <i class="icon ion-ios7-circle-filled"></i>
+                </div>
+                <div class="col">
+                    15<span>%</span> <i class="icon ion-ios7-circle-filled"></i>
+                </div>
+                <div class="col">
+                    20<span>%</span> <i class="icon ion-ios7-circle-filled"></i>
+                </div>
+                <div class="col">
+                    25<span>%</span> <i class="icon ion-ios7-circle-filled"></i>
+                </div>
+            </div>
+            <!-- <div class="each-rating ">
                 <i class="fa fa-heart-o"></i>
             </div>
             <div class="each-rating second ">
@@ -31,12 +48,17 @@
                 <i class="fa fa-heart-o"></i>
                 <i class="fa fa-heart"></i>
                 <i class="fa fa-heart-o"></i>
-            </div>
+            </div> -->
         </div>
 
         <div class="wrapper">
-            <div class="persons-blk" ng-repeat="split in tipzy.peoplelist">
-                <i class="fa fa-user"></i> <div class="calcs"><span>{{tipzy.billedAmount/tipzy.people | currency}}</span> + <span class="tippable">{{tipzy.tipPerPerson | currency}}</span> = <span class="payable">{{tipzy.payablePerPerson | currency}}</span></div>
+            <div class="persons-blk">
+                <i ng-if="tipzy.people < 2" class="icon ion-ios7-person-outline"></i>
+                <i ng-if="tipzy.people >= 2" class="icon ion-ios7-people-outline"></i>
+                <!-- <span>{{tipzy.billedAmount/tipzy.people | currency}}</span> + 
+                <span class="tippable">{{tipzy.tipPerPerson | currency}}</span> =  -->
+                <span class="payable">{{tipzy.payablePerPerson | currency}}</span>
+                <div class="clearfix"></div>
             </div>
         </div>
 

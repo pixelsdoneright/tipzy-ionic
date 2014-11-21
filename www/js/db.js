@@ -6,23 +6,39 @@ tipzy.webdb.db = null;
 var config = [
 	{
 		"property": "currency",
+		"label": "Currency",
+		"category": "i18n",
 		"value": "$"
 	},
 	{
 		"property": "rating_1_tip",
-		"value": "0.0"
+		"label": "Tip Rate 1",
+		"category": "slab",
+		"value": "12"
 	},
 	{
 		"property": "rating_2_tip",
-		"value": "0.10"
+		"label": "Tip Rate 2",
+		"category": "slab",
+		"value": "15"
 	},
 	{
 		"property": "rating_3_tip",
-		"value": "0.12"
+		"label": "Tip Rate 3",
+		"category": "slab",
+		"value": "20"
 	},
 	{
 		"property": "rating_4_tip",
-		"value": "0.15"
+		"label": "Tip Rate 4",
+		"category": "slab",
+		"value": "25"
+	},
+	{
+		"property": "selected_tip",
+		"label": "Default Tip",
+		"category": "defaults",
+		"value": "12"
 	}
 	];
 
@@ -37,7 +53,7 @@ tipzy.webdb.open = function () {
 tipzy.webdb.prepare = function (db) {
 	db.transaction(function (tx) {
 		tx.executeSql(
-			"CREATE TABLE IF NOT EXISTS config(id INTEGER PRIMARY KEY ASC, property TEXT, value TEXT)", [],
+			"CREATE TABLE IF NOT EXISTS config(id INTEGER PRIMARY KEY ASC, category TEXT, property TEXT, value TEXT, label TEXT)", [],
 			function (tx, r) {
 				if (r.insertId == 1) {
 					tipzy.webdb.loadDefaultConfig(db);
@@ -49,8 +65,10 @@ tipzy.webdb.prepare = function (db) {
 tipzy.webdb.loadDefaultConfig = function (db) {
 	db.transaction(function (tx) {
 		for (var i = 0; i < config.length; i++) {
-			tx.executeSql("INSERT INTO config(property, value) VALUES (?, ?)", [
-				config[i].property, config[i].value],
+			var cfg = config[i];
+			tx.executeSql(
+				"INSERT INTO config(category, property, value, label) VALUES (?, ?, ?, ?)", [
+				cfg.category, cfg.property, cfg.value, cfg.label],
 				tipzy.webdb.onSuccess_loadDefaultConfig,
 				tipzy.webdb.onError);
 		}

@@ -12,11 +12,8 @@ angular.module('tipzy.services', [])
 				tx.executeSql("SELECT * FROM config;", [], function (t, r) {
 					for (var i = 0; i < r.rows.length; i++) {
 						var row = r.rows.item(i);
-						var c = {};
-						c.id = row.id;
-						c.property = row.property;
-						c.value = row.value;
-						$rootScope.config.push(c);
+
+						$rootScope.config.push(row);
 					}
 					if (success_callback)
 						success_callback($rootScope.config);

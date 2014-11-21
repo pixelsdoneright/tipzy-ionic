@@ -33,10 +33,13 @@ angular.module('tipzy.controllers', [])
 	};
 })
 
-.controller('calculateController', function ($scope) {
+.controller('calculateController', function ($scope, $timeout,
+	tipzyConfigService) {
 
 	$scope.tipzy = {
-		'billedAmount': 0.00,
+		'currency': '$',
+		"tipSlabs": [],
+		'billedAmount': "0.00",
 		'tipRate': 0.15,
 		'payable': 0.0,
 		'tip': 0.0,
@@ -45,16 +48,45 @@ angular.module('tipzy.controllers', [])
 		'people': 1
 	};
 
+	$timeout(function () {
+		tipzyConfigService.getConfig(function (data) {
+			$scope.$apply(function () {
+
+				for (var i = 0; i < data.length; i++) {
+					var cfg = data[i];
+					if (cfg.property == 'currency') {
+						$scope.tipzy.currency = cfg.value;
+					} else if (cfg.property == 'selected_tip') {
+						$scope.setTip(cfg);
+					}
+
+					if (cfg.category == 'slab')
+						$scope.tipzy.tipSlabs.push(cfg);
+				}
+
+				for (var j = 0; j < $scope.tipzy.tipSlabs.length; j++) {
+
+					if ($scope.tipzy.tipSlabs[j].value == $scope.tipzy.tipRate)
+						$scope.tipzy.tipSlabs[j].selected = true;
+				}
+			});
+		});
+	}, 300);
+
+
+
 	$scope.calculatePayable = function () {
 		var t = $scope.tipzy;
-		var ba = parseFloat(t.billedAmount);
+		var ba = parseFloat(t.billedAmount.replace(",", ""));
 
-		if (ba > 0) {
+		if (ba > 0 && ba < 1000) {
 			t.tip = ba * t.tipRate;
 			t.payable = parseFloat(t.billedAmount) + t.tip;
 
 			t.tipPerPerson = t.tip / t.people;
 			t.payablePerPerson = parseFloat((t.payable / t.people).toFixed(2));
+		} else {
+			t.tip = t.payable = t.tipPerPerson = t.payablePerPerson = 0.0;
 		}
 
 	};
@@ -81,6 +113,21 @@ angular.module('tipzy.controllers', [])
 		}
 
 		$scope.calcSplit();
+	};
+
+	$scope.setTip = function (slab) {
+		$scope.tipzy.tipRate = parseFloat(slab.value) / 100;
+
+		for (var i = 0; i < $scope.tipzy.tipSlabs.length; i++) {
+			var tipSlab = $scope.tipzy.tipSlabs[i];
+
+			tipSlab.selected = false;
+
+			if (tipSlab.value == slab.value) {
+				tipSlab.selected = true;
+			}
+		}
+		$scope.calculatePayable();
 	};
 
 	$scope.calcSplit = function (eachsplit) {

@@ -8,7 +8,7 @@
                 <span class="input-label left">Your bill amount</span>
                 <span class="input-label right">wanna Split?</span>
                 <span class="split-divider">/</span>
-                {{tipzy.currency}}<input type="tel" id="billAmt" name="billAmt" placeholder="Your Bill Amount" autofocus ng-model="tipzy.billedAmount" format ng-change="calculatePayable(); unevenSplit();">
+                <div class="currency">{{tipzy.currency}}</div><input type="tel" id="billAmt" name="billAmt" placeholder="Your Bill Amount" autofocus ng-model="tipzy.billedAmount" format ng-change="calculatePayable(); unevenSplit();">
 
                 <a class="splitters" ng-click="removePeople()">&minus;</a>
                     <span class="the-split">{{tipzy.people}}</span>

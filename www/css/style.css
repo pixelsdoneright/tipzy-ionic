@@ -29,6 +29,7 @@
 	font-family: 'Open Sans', sans-serif !important;
 }
 
+
 .bill-input-blk {
 	background-color: rgba(85,85,85,.8);
 	margin: 5px;
@@ -36,6 +37,17 @@
 	border:0px;
 	height: 70px;
 	position: relative;
+}
+.currency {
+	text-align: left;
+	font-size: 36px;
+	color: #ffffff;
+	font-family: 'Open Sans', sans-serif;
+	/*height: 100%;*/
+	width: 40px;
+	margin-top: -10px;
+	font-weight: 100;
+	display: inline-block;
 }
 .bill-input-blk .item {
 	border:0px;
@@ -98,7 +110,7 @@
 	font-size: 36px;
 	color: #ffffff;
 	margin-top: -6px;
-	/*width: 40px;*/
+	width: 40px;
 	font-weight: 100;
 }
 
@@ -209,4 +221,75 @@
 .item-complex .item-content .icon {
 	font-size: 14px;
 	color: #000;
+}
+
+.each-setting {
+	clear: both;
+	padding:10px;
+	border-bottom: 1px solid #bbb;
+	/*background-color: #444;*/
+}
+
+.cfg-label {
+	vertical-align: top;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	color: #eeeeee;
+}
+.cfg-val {
+	vertical-align: top;
+	display: inline-block;
+	float: right;
+}
+
+.cfg-val input {
+	width: 100px;
+	margin-top: -3px;
+	text-align: center;
+	padding:6px;
+	background-color: #555;
+	border-radius: 4px;
+	color: #ffffff
+}
+.cfg-val button {
+	margin:0px !important;
+	width: 100px;
+	background-color: #555;
+	border-radius: 4px;
+	color: #ffffff;
+	border:0px;
+}
+
+.save-settings {
+	/*position: fixed;
+	bottom:0px;
+	left: 0px;*/
+	color: #eeeeee;
+	text-transform: uppercase;
+	border: 0px;
+	background-color: #333;
+}
+
+.full-page {
+	background-color: rgba(85,85,85,.8);
+
+}
+
+.aboutus {
+	text-align: center;
+	font-size: 18px;
+	padding:20px;
+	line-height: 20px;
+	color: #ffffff;
+}
+
+.socialset {
+	text-align: center;
+	margin: 40px 10px;
+}
+.socialset span {
+	padding: 10px;
+	font-size: 30px;
+	color: #dddddd;
 }
